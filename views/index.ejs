@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+        </tr>
+            <% for(var i=0; i<student.length; i++) { %>
+            <tr>
+            <td><%= student[i].Id %></td>
+            <td><%= student[i].Name %></td>
+            <td><%= student[i].Phone %></td>
+            </tr>
+            <%}%>
+    </table>
+
+    <P>新增</P>
+    <form  action="/upload" method="POST">
+        <input type="text" name="id" />
+        <input type="text" name="name" />
+        <input type="text" name="phone" />
+        <button>Submit</button>
+    </form>
+
+</body>
+</html>
