@@ -5,6 +5,7 @@ express GET POST
 
 # GET 
 html 前端渲染畫面
+```
 <table>
         <tr>
             <th>ID</th>
@@ -19,9 +20,11 @@ html 前端渲染畫面
             </tr>
             <%}%>
 </table>
+```
 
 express 後端處理
   
+```
 app.get('/', (req, res) => {
   connection.query('select * from school.student', function(err, rows, fields) {
     if (err) throw err;
@@ -30,10 +33,12 @@ app.get('/', (req, res) => {
     res.render('index',{student: data});
   });
 })
+```
 
 # POST
 
 html  前端設定表單
+```
 <P>新增</P>
     <form  action="/upload" method="POST">
         <input type="text" name="id" />
@@ -41,8 +46,10 @@ html  前端設定表單
         <input type="text" name="phone" />
         <button>Submit</button>
     </form>
-    
+```
 express 後端處理
+
+```
   app.post('/upload',(req,res) =>{
   var id = req.body.id;
   var name = req.body.name;
@@ -53,6 +60,7 @@ express 後端處理
  });
  res.redirect('/');
 })
+```
 
 
 
