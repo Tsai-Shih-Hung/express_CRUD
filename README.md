@@ -50,8 +50,8 @@ app.get('/', (req, res) => {
 
 html  前端設定表單
 
-<!-- 說明: form  表單如上學期所說的，裡面有欄位跟button。使用者點擊button後，上方action會導向url=/upload，然後到後端。
-      新增資料的時候我們會使用POST來新增。 -->
+說明: form  表單如上學期所說的，裡面有欄位跟button。使用者點擊button後，上方action會導向url=/upload，然後到後端。
+      新增資料的時候我們會使用POST來新增。
       
 ```
 <P>新增</P>
@@ -64,9 +64,9 @@ html  前端設定表單
 ```
 express 後端處理
 
-<!-- 1.資料到後端之後。可以使用req.body.xxx來搭配form表單的name，然後設變數存取起來。在傳資料庫之前可以先console.log出來看看資料的內容。
+1.資料到後端之後。可以使用req.body.xxx來搭配form表單的name，然後設變數存取起來。在傳資料庫之前可以先console.log出來看看資料的內容。
 2.確認之後搭配資料庫指令insert into把資料給資料庫做儲存的動作。
-3.最後的res.redirect('/')代表url回到"/"，重新抓取get資料，前端畫面會馬上看到剛剛所新增的內容。 -->
+3.最後的res.redirect('/')代表url回到"/"，重新抓取get資料，前端畫面會馬上看到剛剛所新增的內容。
 
 ```
   app.post('/upload',(req,res) =>{
