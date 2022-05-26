@@ -1,7 +1,7 @@
-# myapp
+# EXPRESS CRUD
 express GET POST
 
-# 連接資料庫
+# MariaDB 資料庫語法
 ```
 CREATE DATABASE school;
 
