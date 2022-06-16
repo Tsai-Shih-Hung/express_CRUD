@@ -6,12 +6,12 @@ express GET POST
 CREATE DATABASE school;
 
 CREATE TABLE `student`(
-`ID` INT,
+`ID` INT NOT NULL AUTO_INCREMENT,
 `Name` VARCHAR(10),
 `Phone` varchar(10)
 )
 
-INSERT INTO student(`Id`,`Name`,school`Phone`) VALUES (1,'Brian','12345789'),(2,'Cindy','987654321');
+INSERT INTO student(`Name`,school`Phone`) VALUES ('Brian','12345789'),('Cindy','987654321');
 
 ```
 # GET 
@@ -37,13 +37,14 @@ express 後端處理
   
 ```
 app.get('/', (req, res) => {
-  connection.query('select * from school.student', function(err, rows, fields) {
+  connection.query('select * from school.student ORDER BY Id ASC', function(err, rows, fields) {
     if (err) throw err;
     console.log('The solution is: ', rows);
     var data = rows;
     res.render('index',{student: data});
   });
 })
+
 ```
 
 # POST
@@ -80,6 +81,52 @@ express 後端處理
  res.redirect('/');
 })
 ```
+# Edit
+```
+<P>修改</P>
+    <form  action="/edit" method="POST">
+        Id <input type="text" name="id" />
+        Name <input type="text" name="name" />
+        Phone <input type="text" name="phone" />
+        <button>Submit</button>
+    </form>
+```
+```
+app.post('/edit',(req,res) =>{
+  console.log('inside');
+  var id = req.body.id;
+  var name = req.body.name;
+  var phone =req.body.phone; 
+  console.log(id,name,phone);
+  connection.query(`UPDATE school.student SET name='${name}' ,phone ='${phone}' WHERE id='${id}'`, function(err,row,fields){
+   if(err) throw err;
+ });
+ res.redirect('/');
+})
+```
 
+# Delete 
+```
+<P>刪除</P>
+    <form  action="/delete" method="POST">
+        Id <input type="text" name="id" />
+        Name <input type="text" name="name" />
+        Phone <input type="text" name="phone" />
+        <button>Submit</button>
+    </form>
+```
+```
+app.post('/delete',(req,res) =>{
+  console.log('inside');
+  var id = req.body.id;
+  var name = req.body.name;
+  var phone =req.body.phone; 
+  console.log(id,name,phone);
+  connection.query(`DELETE FROM school.student WHERE id='${id}' and name='${name}' and phone ='${phone}'`, function(err,row,fields){
+   if(err) throw err;
+ });
+ res.redirect('/');
+})
+```
 
 
